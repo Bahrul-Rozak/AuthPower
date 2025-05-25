@@ -1,0 +1,13 @@
+{
+  "name": "username/authpower",
+  "description": "Powerfull native PHP authentication library with bootstrap UI and CLI commands",
+  "type": "library",
+  "autoload": {
+    "psr-4": {
+      "AuthPower\\": "app/"
+    }
+  },
+  "require": {
+    "php": ">=7.4"
+  }
+}
