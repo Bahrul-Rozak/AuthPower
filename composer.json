@@ -5,7 +5,8 @@
   "autoload": {
     "psr-4": {
       "AuthPower\\": "app/",
-       "AuthPower\\Migrations\\": "database/migrations/"
+       "AuthPower\\Migrations\\": "database/migrations/",
+       "AuthPower\\Seeders\\": "app/Seeders/"
     }
   },
   "require": {

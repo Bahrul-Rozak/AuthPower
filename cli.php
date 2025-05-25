@@ -3,6 +3,7 @@
 require __DIR__ . '/vendor/autoload.php';
 
 use AuthPower\Migrations\CreateUsersTable;
+use AuthPower\Seeders\UserSeeder;
 
 $argv = $_SERVER['argv'];
 
@@ -18,7 +19,7 @@ switch ($argv[1]) {
         CreateUsersTable::up();
         break;
     case 'make:user':
-        echo "Creating dummy user...\n";
+        UserSeeder::run();
         break;
     default:
         echo "Command not found\n";
