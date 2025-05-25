@@ -3,6 +3,8 @@
 namespace AuthPower\Controllers;
 
 use AuthPower\Helpers\Database;
+use AuthPower\Helpers\Csrf;
+use AuthPower\Middleware\GuestMiddleware;
 
 class AuthController
 {
@@ -10,6 +12,7 @@ class AuthController
 
     public function __construct()
     {
+        GuestMiddleware::check();
         $config = require __DIR__ . '/../../config/config.php';
         $this->db = Database::getInstance($config['db'])->getConnection();
     }
@@ -17,6 +20,10 @@ class AuthController
     public function register()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (!Csrf::checkToken($_POST['_csrf_token'] ?? '')) {
+                die("Invalid CSRF token.");
+            }
+
             $name = trim($_POST['name'] ?? '');
             $email = trim($_POST['email'] ?? '');
             $password = $_POST['password'] ?? '';

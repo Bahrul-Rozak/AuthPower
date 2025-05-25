@@ -12,6 +12,7 @@
         <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
     <?php endif; ?>
     <form method="POST" action="?page=login">
+        <?= \AuthPower\Helpers\Csrf::inputField(); ?>
         <div class="mb-3">
             <label>Email</label>
             <input type="email" name="email" class="form-control" required value="<?= htmlspecialchars($_POST['email'] ?? '') ?>">

@@ -3,6 +3,7 @@
 namespace AuthPower\Controllers;
 
 use AuthPower\Helpers\Database;
+use AuthPower\Middleware\AuthMiddleware;
 
 class DashboardController
 {
@@ -10,6 +11,7 @@ class DashboardController
 
     public function __construct()
     {
+        AuthMiddleware::check();
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
