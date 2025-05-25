@@ -2,19 +2,20 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
 
-// Placeholder for CLI commands
-echo "AuthPower CLI - available commands:\n";
-echo "  migrate        Run database migrations\n";
-echo "  make:user      Create dummy user\n";
+use AuthPower\Migrations\CreateUsersTable;
 
 $argv = $_SERVER['argv'];
+
 if (!isset($argv[1])) {
+    echo "AuthPower CLI - available commands:\n";
+    echo "  migrate        Run database migrations\n";
+    echo "  make:user      Create dummy user\n";
     exit(0);
 }
 
 switch ($argv[1]) {
     case 'migrate':
-        echo "Running migrations...\n";
+        CreateUsersTable::up();
         break;
     case 'make:user':
         echo "Creating dummy user...\n";

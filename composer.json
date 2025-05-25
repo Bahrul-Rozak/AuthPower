@@ -4,7 +4,8 @@
   "type": "library",
   "autoload": {
     "psr-4": {
-      "AuthPower\\": "app/"
+      "AuthPower\\": "app/",
+       "AuthPower\\Migrations\\": "database/migrations/"
     }
   },
   "require": {
