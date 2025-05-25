@@ -1,4 +1,7 @@
 <?php
+
+use AuthPower\Controllers\PasswordResetController;
+
 session_start();
 
 require __DIR__ . '/../vendor/autoload.php';
@@ -18,6 +21,12 @@ switch ($page) {
         break;
     case 'dashboard':
         (new \AuthPower\Controllers\DashboardController())->index();
+        break;
+    case 'forgot-password':
+        (new PasswordResetController())->forgot();
+        break;
+    case 'reset-password':
+        (new PasswordResetController())->reset();
         break;
     default:
         echo "Welcome to AuthPower Home";
