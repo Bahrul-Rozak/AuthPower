@@ -41,7 +41,8 @@ class PasswordResetController
                 die("Invalid CSRF token.");
             }
 
-            $db = new Database();
+            $config = require __DIR__ . '/../../config/config.php';
+            $db = new Database($config['db']);
 
             $pdo = $db->getConnection();
             $stmt = $pdo->prepare("SELECT email FROM password_resets WHERE token = ?");

@@ -1,6 +1,7 @@
 <?php
 
 use AuthPower\Controllers\PasswordResetController;
+use AuthPower\Controllers\EmailVerificationController;
 
 session_start();
 
@@ -27,6 +28,9 @@ switch ($page) {
         break;
     case 'reset-password':
         (new PasswordResetController())->reset();
+        break;
+    case 'verify-email':
+        (new EmailVerificationController())->verify();
         break;
     default:
         echo "Welcome to AuthPower Home";

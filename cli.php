@@ -5,6 +5,8 @@ require __DIR__ . '/vendor/autoload.php';
 use AuthPower\Migrations\CreateUsersTable;
 use AuthPower\Seeders\UserSeeder;
 use AuthPower\Migrations\CreatePasswordResetsTable;
+use AuthPower\Migrations\AddEmailVerifiedAtToUsers;
+use AuthPower\Migrations\CreateEmailVerificationsTable;
 
 $argv = $_SERVER['argv'];
 
@@ -19,6 +21,8 @@ switch ($argv[1]) {
     case 'migrate':
         CreateUsersTable::up();
         CreatePasswordResetsTable::up();
+        AddEmailVerifiedAtToUsers::up();
+        CreateEmailVerificationsTable::up();
         break;
     case 'make:user':
         UserSeeder::run();
